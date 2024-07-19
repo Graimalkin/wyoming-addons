@@ -21,7 +21,7 @@ RUN \
         wheel \
     && .venv/bin/pip3 install --no-cache-dir \
         --extra-index-url https://www.piwheels.org/simple \
-        "wyoming-openwakeword @ https://github.com/${REPO_OWNER}/wyoming-openwakeword/archive/refs/tags/v${WYOMING_OPENWAKEWORD_VERSION}.tar.gz" \
+        "wyoming-openwakeword @ https://github.com/graimalkin/wyoming-openwakeword/archive/refs/tags/v${WYOMING_OPENWAKEWORD_VERSION}.tar.gz" \
     \
     && rm -rf /var/lib/apt/lists/*
 
