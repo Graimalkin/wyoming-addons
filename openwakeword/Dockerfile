@@ -30,4 +30,4 @@ COPY run.sh ./
 
 EXPOSE 10400
 
-ENTRYPOINT ["bash", "/run.sh"]
+# ENTRYPOINT ["bash", "/run.sh"]
