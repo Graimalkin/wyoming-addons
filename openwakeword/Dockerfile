@@ -5,6 +5,7 @@ ARG TARGETVARIANT
 # Install openWakeWord
 WORKDIR /usr/src
 ARG WYOMING_OPENWAKEWORD_VERSION='v1.10.0'
+ARG REPO_OWNER='rhasspy'
 
 RUN \
     apt-get update \
@@ -20,7 +21,7 @@ RUN \
         wheel \
     && .venv/bin/pip3 install --no-cache-dir \
         --extra-index-url https://www.piwheels.org/simple \
-        "wyoming-openwakeword @ https://github.com/rhasspy/wyoming-openwakeword/archive/refs/heads/${WYOMING_OPENWAKEWORD_VERSION}.tar.gz" \
+        "wyoming-openwakeword @ https://github.com/${REPO_OWNER}/wyoming-openwakeword/archive/refs/heads/${WYOMING_OPENWAKEWORD_VERSION}.tar.gz" \
     \
     && rm -rf /var/lib/apt/lists/*
 
