@@ -8,6 +8,7 @@ Docker-only builds for Home Assistant add-ons that use the [Wyoming protocol](ht
 * [snowboy](https://hub.docker.com/r/rhasspy/wyoming-snowboy) ([Add-on](https://github.com/rhasspy/hassio-addons/tree/master/snowboy/README.md))
 * [microWakeWord](https://hub.docker.com/r/rhasspy/wyoming-microwakeword) ([Add-on](https://github.com/rhasspy/hassio-addons/tree/master/microwakeword/README.md))
 * [rhasspy-speech](https://hub.docker.com/r/rhasspy/wyoming-rhasspy-speech) ([Add-on](https://github.com/rhasspy/hassio-addons/tree/master/rhasspy-speech/README.md))
+* [speech-to-phrase](https://hub.docker.com/r/rhasspy/wyoming-speech-to-phrase) ([Add-on](https://github.com/home-assistant/addons/blob/master/speech_to_phrase/README.md))
 
 
 ## Run Whisper
@@ -16,12 +17,28 @@ Docker-only builds for Home Assistant add-ons that use the [Wyoming protocol](ht
 docker run -it -p 10300:10300 -v /path/to/local/data:/data rhasspy/wyoming-whisper --model tiny-int8 --language en
 ```
 
+Use a HuggingFace transformers model instead of faster-whisper:
+
+``` sh
+docker run -it -p 10300:10300 -v /path/to/local/data:/data rhasspy/wyoming-whisper --use-transformers --model openai/whisper-tiny.en --language en
+```
+
 
 ## Run Piper
 
 ``` sh
 docker run -it -p 10200:10200 -v /path/to/local/data:/data rhasspy/wyoming-piper --voice en_US-lessac-medium
 ```
+
+### HTTP Server
+
+An HTTP server is available on port 5000.
+
+``` sh
+docker run -it -p 5000:5000 -p 10200:10200 -v /path/to/local/data:/data rhasspy/wyoming-piper --voice en_US-lessac-medium
+```
+
+Visit http://localhost:5000 to explore the API.
 
 ## Run openWakeWord
 
@@ -45,4 +62,10 @@ docker run -it -p 10400:10400 rhasspy/wyoming-microwakeword
 
 ``` sh
 docker run -it -p 10300:10300 -v /path/to/download/models:/models -v /path/to/train:/train rhasspy/wyoming-rhasspy-speech
+```
+
+## Run speech-to-phrase
+
+``` sh
+docker run -it -p 10300:10300 -v /path/to/download/models:/models -v /path/to/train:/train rhasspy/wyoming-speech-to-phrase --hass-websocket-uri 'ws://homeassistant.local:8123/api/websocket' --hass-token '<LONG_LIVED_ACCESS_TOKEN>' --retrain-on-start
 ```
