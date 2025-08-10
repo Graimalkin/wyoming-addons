@@ -28,7 +28,7 @@ RUN \
         "wyoming[http] @ https://github.com/OHF-voice/wyoming/archive/refs/tags/${WYOMING_VERSION}.tar.gz" \
     \
     && curl -L -s \
-        "https://github.com/OHF-Voice/piper1-gpl/releases/download/v${BINARY_PIPER_VERSION}/piper_${TARGETARCH}${TARGETVARIANT}.tar.gz" \
+        "https://github.com/OHF-Voice/piper1-gpl/releases/download/v${BINARY_PIPER_VERSION}.tar.gz" \
         | tar -zxvf - -C /usr/share \
     \
     && apt-get remove -y --purge \
