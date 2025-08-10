@@ -14,6 +14,7 @@ RUN \
         python3-pip \
         python3-venv \
         libopenblas0 \
+        libcblas-dev\
     \
     && python3 -m venv .venv \
     && .venv/bin/pip3 install --no-cache-dir -U \
