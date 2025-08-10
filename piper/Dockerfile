@@ -6,7 +6,7 @@ ARG TARGETVARIANT
 WORKDIR /usr/src
 ARG WYOMING_PIPER_VERSION='1.6.3'
 ARG WYOMING_VERSION='1.7.2'
-ARG BINARY_PIPER_VERSION='1.2.0'
+ARG BINARY_PIPER_VERSION='1.3.0'
 ENV PIP_BREAK_SYSTEM_PACKAGES=1
 
 RUN \
@@ -28,7 +28,7 @@ RUN \
         "wyoming[http] @ https://github.com/OHF-voice/wyoming/archive/refs/tags/${WYOMING_VERSION}.tar.gz" \
     \
     && curl -L -s \
-        "https://github.com/rhasspy/piper/releases/download/v${BINARY_PIPER_VERSION}/piper_${TARGETARCH}${TARGETVARIANT}.tar.gz" \
+        "https://github.com/OHF-Voice/piper1-gpl/releases/download/v${BINARY_PIPER_VERSION}/piper_${TARGETARCH}${TARGETVARIANT}.tar.gz" \
         | tar -zxvf - -C /usr/share \
     \
     && apt-get remove -y --purge \
